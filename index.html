@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eatophiya POS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🍗 EATOPHIYA POS</h1>
+
+    <!-- MENU -->
+
+    <div class="card">
+        <h2>Add Menu Item</h2>
+
+        <input
+            type="text"
+            id="itemName"
+            placeholder="Item Name">
+
+        <input
+            type="number"
+            id="itemPrice"
+            placeholder="Price">
+
+        <button onclick="addMenuItem()">
+            Add Item
+        </button>
+    </div>
+
+    <!-- BILLING -->
+
+    <div class="card">
+
+        <h2>Create Bill</h2>
+
+        <input
+            type="text"
+            id="searchItem"
+            placeholder="Search Item"
+            onkeyup="searchItems()">
+
+        <select id="menuSelect"></select>
+
+        <input
+            type="number"
+            id="quantity"
+            placeholder="Quantity">
+
+        <button onclick="addToBill()">
+            Add To Bill
+        </button>
+
+    </div>
+
+    <!-- RECEIPT -->
+
+    <div class="card">
+
+        <div id="printArea">
+
+            <div class="receipt-header">
+
+                <h2>EATOPHIYA</h2>
+
+                <p>Tasty the Crunch </p>
+
+                <p id="currentDate"></p>
+
+                <hr>
+
+            </div>
+
+            <div id="billItems"></div>
+
+            <hr>
+
+            <h3>
+                Total :
+                ₹<span id="total">0</span>
+            </h3>
+
+            <hr>
+
+            <p>
+                Thank You Visit Again
+            </p>
+                            <p> ph no : 9042336068 </p>
+
+
+        </div>
+
+    </div>
+
+    <!-- BUTTONS -->
+
+    <button onclick="saveSale()">
+        Save Sale
+    </button>
+
+    <button onclick="printBill()">
+        Print Bill
+    </button>
+
+    <button onclick="clearBill()">
+        Clear Bill
+    </button>
+
+    <!-- DAILY REPORT -->
+
+    <div class="card">
+
+        <h2>Daily Sales Report</h2>
+
+        <p>
+            Today's Sales :
+            ₹<span id="todaySales">0</span>
+        </p>
+
+        <button onclick="printDailySales()">
+            Print Daily Report
+        </button>
+
+    </div>
+
+    <!-- MONTHLY REPORT -->
+
+    <div class="card">
+
+        <h2>Monthly Sales Report</h2>
+
+        <p>
+            Monthly Sales :
+            ₹<span id="monthlySales">0</span>
+        </p>
+
+        <button onclick="printMonthlySales()">
+            Print Monthly Report
+        </button>
+
+    </div>
+
+    <div>
+        <button onclick="resetData()">reset all data</button>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
