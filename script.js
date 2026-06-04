@@ -1,3 +1,29 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc
+} from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD8pwGVHNh2v7ot0DDdaJPiIzzTIDokgq4",
+  authDomain: "eatophiya.firebaseapp.com",
+  projectId: "eatophiya",
+  storageBucket: "eatophiya.firebasestorage.app",
+  messagingSenderId: "281581642950",
+  appId: "1:281581642950:web:c85b2652b0a9e1a806a3c7",
+  measurementId: "G-78KVFDFJ31"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const password = prompt("enter password")
+if(password !== "eatophiya123"){
+    document.body.innerHTML ="<h1>Access denied</h1>"
+}
+
 let menu = JSON.parse(localStorage.getItem("menu")) || [];
 let sales = JSON.parse(localStorage.getItem("sales")) || [];
 
@@ -197,6 +223,17 @@ function saveSale(){
     };
 
     sales.push(sale);
+
+    addDoc(
+    collection(db, "sales"),
+    sale
+)
+.then(() => {
+    console.log("Firebase Saved");
+})
+.catch((error) => {
+    console.error(error);
+});
 
     localStorage.setItem(
         "sales",
